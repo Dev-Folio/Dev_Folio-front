@@ -1,8 +1,13 @@
 import axios, { AxiosError } from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
+import { MemberViewDto } from '../dto';
 
 export interface Member {
   isLogined: boolean;
+  image: string | null;
+  memberId: number | null;
+  name: string | null;
+  number: string | null;
 }
 
 export interface MemberContext {
@@ -24,7 +29,13 @@ export function MemberProvider({ children }: { children: React.ReactNode }) {
       const token = localStorage.getItem('token');
       if (!token) {
         console.log('token not exist');
-        setMember({ isLogined: false });
+        setMember({
+          isLogined: false,
+          image: null,
+          memberId: null,
+          name: null,
+          number: null,
+        });
         return;
       }
 
@@ -39,13 +50,26 @@ export function MemberProvider({ children }: { children: React.ReactNode }) {
         );
         if (response.status === 200) {
           console.log('logined');
-          setMember({ isLogined: true });
+          const data: MemberViewDto = response?.data;
+          setMember({
+            isLogined: true,
+            image: data.image,
+            name: data.name,
+            memberId: data.memberId,
+            number: data.number,
+          });
         }
       } catch (error) {
         // 로그인 되지 않거나, 토큰 만료됨
         if (error instanceof AxiosError && error.response?.status === 401) {
           console.log('token expired');
-          setMember({ isLogined: false });
+          setMember({
+            isLogined: false,
+            image: null,
+            memberId: null,
+            name: null,
+            number: null,
+          });
           return;
         } else {
           console.error(error);
