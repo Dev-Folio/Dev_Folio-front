@@ -19,7 +19,7 @@ export default function login() {
         style={{
             verticalAlign :'center'
         }}>
-            <h1>로그인</h1>
+            <h1><b>로그인</b></h1>
             <div>
                 <div
                 style={{
@@ -45,6 +45,7 @@ export default function login() {
 
         </div>
     </div>
+    
   )
 }
 
