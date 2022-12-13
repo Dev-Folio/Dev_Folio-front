@@ -55,7 +55,7 @@ export function MemberProvider({ children }: { children: React.ReactNode }) {
             isLogined: true,
             image: data.image,
             name: data.name,
-            memberId: data.memberId,
+            memberId: data.member_id,
             number: data.number,
           });
         }
