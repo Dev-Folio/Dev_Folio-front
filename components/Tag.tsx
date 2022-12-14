@@ -12,6 +12,7 @@ export function SearchTag({ data, tagClick }: SearchTagProps) {
     <button
       className={classNames(
         styles.container,
+        styles.search,
         data.selected ? styles.selected : styles.unselected
       )}
       onClick={() => {
@@ -28,5 +29,7 @@ interface CardTagProps {
 }
 
 export function CardTag({ data }: CardTagProps) {
-  return <div className={styles.container}>{data.name}</div>;
+  return (
+    <div className={classNames(styles.container, styles.card)}>{data.name}</div>
+  );
 }

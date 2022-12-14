@@ -1,12 +1,34 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import { IoSearchOutline } from 'react-icons/io5';
+import Card from '../components/Card';
 import Header from '../components/Header';
 import { SearchTag } from '../components/Tag';
-import { CategoryDto, TagData, TagDto } from '../dto';
+import { CardDto, CategoryDto, TagData, TagDto } from '../dto';
 import { client } from '../function/request';
 import styles from '../styles/Search.module.scss';
+
+const mockCardData: CardDto = {
+  project_id: 0,
+  thumbnail: '/sample_image.png',
+  project_name: 'Dev-Folio',
+  tags: [
+    {
+      tag_id: 1,
+      name: 'JavaScript',
+      color: '#ffffff',
+      categories: [],
+    },
+  ],
+  wrote_member: {
+    member_id: 1,
+    name: '이정윤',
+    image: '/sample_profile_image2.jpeg',
+    number: '201845092',
+  },
+  likes: 0,
+  comments: 0,
+};
 
 export default function Search() {
   const [categories, setCategories] = useState<CategoryDto[]>([]);
@@ -103,6 +125,9 @@ export default function Search() {
             {tags?.map((tag) => (
               <SearchTag data={tag} tagClick={tagClick} key={tag.tagId} />
             ))}
+          </div>
+          <div style={{ display: 'flex' }}>
+            <Card data={mockCardData} />
           </div>
         </div>
       </div>

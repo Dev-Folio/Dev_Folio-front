@@ -10,7 +10,11 @@
   width: fit-content;
   padding: 0px 10px;
   margin-right: 5px;
+}
+
+.search {
   margin-bottom: 10px;
+
 }
 
 .unselected {
@@ -21,4 +25,9 @@
 .selected {
   background-color: black;
   color: white;
+}
+
+.card {
+  font-size: 12px;
+  margin-bottom: 4px;
 }

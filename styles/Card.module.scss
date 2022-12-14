@@ -1,0 +1,88 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  .thumbnail_wrapper {
+    flex-shrink: 0;
+    margin: 5px;
+    position: relative;
+    height: 140px;
+
+    .thumbnail {
+      border-radius: 15px;
+      object-fit: cover;
+    }
+  }
+
+  .seperator {
+    margin: 0;
+    background-color: black;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 5px;
+    justify-content: space-between;
+    height: 100%;
+
+    .info1 {
+
+      .project_name {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 5px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .info2 {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .profile {
+        display: flex;
+        align-items: center;
+
+        .profile_image {
+          object-fit: cover;
+          border-radius: 30px;
+        }
+
+        .wrote_member {
+          margin-left: 5px;
+        }
+      }
+
+      .likes_comments {
+        display: flex;
+        align-items: center;
+
+        .likes {
+          gap: 2px;
+          display: flex;
+          align-items: center;
+        }
+
+        .comment {
+          margin-left: 5px;
+          gap: 2px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
