@@ -25,6 +25,13 @@ export default function Home() {
               </Button>
             </h2>
             <hr />
+            <>
+              <Card data={mockCardData} />
+              <Card data={mockCardData} />
+              <Card data={mockCardData} />
+              <Card data={mockCardData} />
+              <Card data={mockCardData} />
+            </>
           </div>
           <div className='recentProject'>
             <h2>
@@ -35,6 +42,11 @@ export default function Home() {
             </h2>
 
             <hr />
+            <Card data={mockCardData} />
+            <Card data={mockCardData} />
+            <Card data={mockCardData} />
+            <Card data={mockCardData} />
+            <Card data={mockCardData} />
           </div>
         </div>
       </div>
