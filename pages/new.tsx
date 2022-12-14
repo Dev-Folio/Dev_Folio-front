@@ -9,9 +9,6 @@ import Image from "next/image";
 // toast ui
 import dynamic from "next/dynamic";
 
-//버퍼가 없다는 오류 해결을 위한 코드
-window.Buffer = window.Buffer || require("buffer").Buffer;
-
 export default function NewProject() {
   const ToastEditor = dynamic(() => import("../components/ToastEditor"), {
     ssr: false,

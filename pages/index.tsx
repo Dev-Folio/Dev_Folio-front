@@ -4,8 +4,36 @@ import Header from "../components/Header";
 import styles from "../styles/Home.module.scss";
 import Card from "../components/Card";
 import { Button, Nav } from "react-bootstrap";
+import { CardDto } from "../dto";
+import { useEffect, useState } from "react";
+import { client } from "../function/request";
 
 export default function Home() {
+  const [card, setCard] = useState<CardDto[]>([]);
+  const [likeCard, setLikeCard] = useState<CardDto[]>([]);
+
+  useEffect(() => {
+    const getCard = async () => {
+      const response = await client.get("/?page=0&sort=date,ASC");
+      const data: CardDto[] = response.data;
+      console.log("card", data);
+      setCard(data);
+    };
+
+    getCard();
+  }, []);
+
+  useEffect(() => {
+    const getLikeCard = async () => {
+      const response = await client.get("/?page=0&sort=likes,ASC");
+      const data: CardDto[] = response.data;
+      console.log("likecard", data);
+      setLikeCard(data);
+    };
+
+    getLikeCard();
+  }, []);
+
   return (
     <div>
       <div>
@@ -26,11 +54,11 @@ export default function Home() {
             </h2>
             <hr />
             <>
-              <Card data={mockCardData} />
-              <Card data={mockCardData} />
-              <Card data={mockCardData} />
-              <Card data={mockCardData} />
-              <Card data={mockCardData} />
+              <Card data={card[0]} />
+              <Card data={card[1]} />
+              <Card data={card[2]} />
+              <Card data={card[3]} />
+              <Card data={card[4]} />
             </>
           </div>
           <div className='recentProject'>
@@ -42,11 +70,11 @@ export default function Home() {
             </h2>
 
             <hr />
-            <Card data={mockCardData} />
-            <Card data={mockCardData} />
-            <Card data={mockCardData} />
-            <Card data={mockCardData} />
-            <Card data={mockCardData} />
+            <Card data={likeCard[0]} />
+            <Card data={likeCard[1]} />
+            <Card data={likeCard[2]} />
+            <Card data={likeCard[3]} />
+            <Card data={likeCard[4]} />
           </div>
         </div>
       </div>
