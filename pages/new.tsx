@@ -5,10 +5,6 @@ import styles from "../styles/NewProject.module.scss";
 
 // toast ui
 import dynamic from "next/dynamic";
-// import { Editor } from "@toast-ui/react-editor";
-// import "@toast-ui/editor/dist/toastui-editor.css";
-// import { v4 as uuidv4 } from "uuid";
-// import S3 from "react-aws-s3-typescript";
 
 export default function NewProject() {
   const ToastEditor = dynamic(() => import("../components/ToastEditor"), {
