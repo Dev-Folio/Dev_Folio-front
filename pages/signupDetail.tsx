@@ -38,7 +38,13 @@ export default function signup() {
               <label>
                 <b>학번</b>
               </label>
-              <input type='text' id='id' readOnly value='202045101@itc.ac.kr' />
+              <input
+                type='text'
+                id='id'
+                readOnly
+                value='202045101@itc.ac.kr'
+                style={{ border: "none" }}
+              />
               <label>
                 <b>이름</b>
               </label>
