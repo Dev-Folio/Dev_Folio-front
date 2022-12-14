@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { IoSearchOutline } from 'react-icons/io5';
 import Card from '../components/Card';
 import Header from '../components/Header';
-import { SearchTag } from '../components/Tag';
-import { CardDto, CategoryDto, TagData, TagDto } from '../dto';
+import { CardTag, MemberTag, SearchTag } from '../components/Tag';
+import { CardDto, CategoryDto, TagData, TagDto, MemberViewDto } from '../dto';
 import { client } from '../function/request';
 import styles from '../styles/Search.module.scss';
 
@@ -34,6 +35,12 @@ export default function Search() {
   const [categories, setCategories] = useState<CategoryDto[]>([]);
   const [tags, setTags] = useState<TagData[]>([]);
   const [selectedTag, setSelectedTag] = useState<number[]>([]);
+  const [query, setQuery] = useState('');
+  const [members, setMembers] = useState<MemberViewDto[]>([]);
+  const [selectedMembers, setSelectedMembers] = useState<MemberViewDto[]>([]);
+
+  const router = useRouter();
+  const { projectId } = router.query;
 
   useEffect(() => {
     const getCategories = async () => {
@@ -94,6 +101,36 @@ export default function Search() {
     setTags(newTags);
   }, [selectedTag]);
 
+  const handleSearch = () => {};
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    if (value.includes('@') && value[value.indexOf('@') + 1]) {
+      const name = value.substring(value.indexOf('@') + 1);
+      console.log('name', name);
+      getMembers(name);
+    } else {
+      setMembers([]);
+    }
+
+    setQuery(e.target.value);
+  };
+
+  const getMembers = async (name: string) => {
+    const response = await client.get('/search/member', {
+      params: { query: name },
+    });
+    const data: MemberViewDto[] = response.data;
+    setMembers(data);
+  };
+
+  const handleMemberClick = (member: MemberViewDto) => {
+    const newSelectedMembers = [...selectedMembers];
+    newSelectedMembers.push(member);
+    setSelectedMembers(newSelectedMembers);
+  };
+
   return (
     <>
       <Header />
@@ -108,10 +145,15 @@ export default function Search() {
           {/* 검색창 */}
           <div className={styles.search}>
             <IoSearchOutline size={25} />
+            {members.map((member) => (
+              <MemberTag data={member} />
+            ))}
             <input
               className={styles.input}
               placeholder="@로 시작하여 유저를 검색할 수 있습니다"
-            ></input>
+              value={query}
+              onChange={handleChange}
+            />
             <Button
               variant="outline-secondary"
               className={styles.search_button}
@@ -120,12 +162,27 @@ export default function Search() {
             </Button>
           </div>
 
+          {members.length > 0 ? (
+            <div className={styles.dropdown}>
+              {members.map((member) => (
+                <button
+                  className={styles.member}
+                  onClick={() => {
+                    handleMemberClick(member);
+                  }}
+                >{`${member.name} (${member.number})`}</button>
+              ))}
+            </div>
+          ) : null}
+
+          {/* 태그 */}
           <div className={styles.tag_container}>
-            {/* 태그 */}
             {tags?.map((tag) => (
               <SearchTag data={tag} tagClick={tagClick} key={tag.tagId} />
             ))}
           </div>
+
+          {/* 카드들 */}
           <div style={{ display: 'flex' }}>
             <Card data={mockCardData} />
           </div>

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { TagData, TagDto } from '../dto';
+import { MemberViewDto, TagData, TagDto } from '../dto';
 import styles from '../styles/Tag.module.scss';
 
 interface SearchTagProps {
@@ -31,5 +31,17 @@ interface CardTagProps {
 export function CardTag({ data }: CardTagProps) {
   return (
     <div className={classNames(styles.container, styles.card)}>{data.name}</div>
+  );
+}
+
+interface MemberTagProps {
+  data: MemberViewDto;
+}
+
+export function MemberTag({ data }: MemberTagProps) {
+  return (
+    <div className={classNames(styles.container, styles.member)}>
+      {data.name}
+    </div>
   );
 }

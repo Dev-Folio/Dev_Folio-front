@@ -38,6 +38,27 @@
       }
     }
 
+    .dropdown {
+      background-color: white;
+      position: absolute;
+      margin-left: 35px;
+      width: fit-content;
+      height: fit-content;
+      border-style: solid;
+      border-top: none;
+      border-width: 2px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+
+      .member {
+        background-color: white;
+        outline: none;
+        border: none;
+        text-align: left;
+      }
+    }
+
     .tag_container {
       margin-top: 20px;
       display: flex;
