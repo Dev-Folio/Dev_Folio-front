@@ -2,8 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/Header";
 
-// 이름은 임시 이름으로 했음
-export default function resetpw() {
+export default function signup() {
   return (
     <div>
       <div>
@@ -24,9 +23,8 @@ export default function resetpw() {
             verticalAlign: "center",
           }}
         >
-          {/* 이거 폰트 바꾸면 안되나 */}
           <h1>
-            <b>회원정보 수정</b>
+            <b>회원가입</b>
           </h1>
           <div>
             <div
@@ -37,27 +35,14 @@ export default function resetpw() {
                 verticalAlign: "middle",
               }}
             >
-              <br />
-              <label>
-                <b>이름</b>
-              </label>
-              <input
-                type='text'
-                id='name'
-                value='김민주'
-                readOnly
-                style={{ border: "none" }}
-              />
               <label>
                 <b>학번</b>
               </label>
-              <input
-                type='text'
-                id='id'
-                value='202045101@itc.ac.kr'
-                readOnly
-                style={{ border: "none" }}
-              />
+              <input type='text' id='id' readOnly value='202045101@itc.ac.kr' />
+              <label>
+                <b>이름</b>
+              </label>
+              <input type='text' id='name' />
               <label>
                 <b>비밀번호</b>
               </label>
@@ -69,18 +54,22 @@ export default function resetpw() {
               <label>
                 <b>전화번호</b>
               </label>
-              <input
-                type='text'
-                id='phone'
-                value='202045101@itc.ac.kr'
-                readOnly
-                style={{ border: "none" }}
-              />
-
+              <div
+                style={{
+                  display: "flex",
+                  width: "300px",
+                  verticalAlign: "middle",
+                }}
+              >
+                <input type='text' id='d' />
+                <input type='text' id='c' />
+                <input type='text' id='s' />
+              </div>
               <br />
 
-              <Button variant='primary'>회원정보 저장</Button>
+              <Button variant='primary'>회원가입</Button>
             </div>
+            <div></div>
           </div>
         </div>
       </div>

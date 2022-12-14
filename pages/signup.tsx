@@ -1,9 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import Header from "../components/Header";
 
 export default function signup() {
   return (
     <div>
+      <div>
+        <Header />
+      </div>
       <div
         className='body'
         style={{
@@ -34,28 +38,16 @@ export default function signup() {
               <label>
                 <b>학번</b>
               </label>
-              <input type='text' id='id' readOnly value='202045101@itc.ac.kr' />
-              <label>
-                <b>이름</b>
-              </label>
-              <input type='text' id='name' />
-              <label>
-                <b>비밀번호</b>
-              </label>
-              <input type='password' id='password' />
-              <label>
-                <b>비밀번호 확인</b>
-              </label>
-              <input type='password' id='passwordCheck' />
-              <label>
-                <b>전화번호</b>
-              </label>
-              <input type='d' id='passwordCheck' />
-              <input type='password' id='passwordCheck' />
-              <input type='password' id='passwordCheck' />
+              <div
+                style={{
+                  display: "block",
+                }}
+              >
+                <input type='text' id='id' value='202045101' />{" "}
+                <b>@itc.ac.kr</b>
+              </div>
               <br />
-
-              <Button variant='primary'>회원가입</Button>
+              <Button variant='primary'>이메일 보내기</Button>
             </div>
             <div></div>
           </div>
