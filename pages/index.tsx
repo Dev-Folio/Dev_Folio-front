@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
+import Search from "../components/Search";
 import styles from "../styles/Home.module.css";
 import Card from "../components/Card";
 import { Button, Nav } from "react-bootstrap";
@@ -23,24 +24,7 @@ export default function Home() {
       >
         <div>
           <div className='searchArea'>
-            <nav className='navbar bg-light'>
-              <div className='container'>
-                <a className='navbar-brand' href='#'>
-                  <Image
-                    src='/public/logo.png'
-                    alt='image'
-                    width='30'
-                    height='24'
-                  ></Image>
-                </a>
-                <Button
-                  className='btn btn-secondary'
-                  style={{ float: "right" }}
-                >
-                  검색하기
-                </Button>
-              </div>
-            </nav>
+            <Search />
           </div>
           <br />
           <div className='poupularProject'>

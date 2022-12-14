@@ -1,8 +1,9 @@
 import Header from "../components/Header";
+
 import React from "react";
 import { Button } from "react-bootstrap";
 
-export default function login() {
+export default function Login() {
   return (
     <div>
       <div>
