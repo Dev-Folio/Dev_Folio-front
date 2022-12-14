@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import Header from "../components/Header";
 
 // 이름은 임시 이름으로 했음
-export default function resetpw() {
+export default function ResetPwMember() {
   return (
     <div>
       <div>

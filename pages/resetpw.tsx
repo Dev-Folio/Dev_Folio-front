@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/Header";
 
-export default function resetpw() {
+export default function ResetPw() {
   return (
     <div>
       <div>

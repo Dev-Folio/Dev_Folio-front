@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/Header";
 
-export default function signup() {
+export default function SignUp() {
   return (
     <div>
       <div>
