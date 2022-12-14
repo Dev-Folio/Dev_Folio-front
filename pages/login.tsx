@@ -1,9 +1,13 @@
 import Header from "../components/Header";
-
+import styles from "../styles/Login.module.scss";
 import React from "react";
 import { Button } from "react-bootstrap";
 
 export default function Login() {
+  const onLogin = () => {
+    let id = document.querySelector("#id");
+    let pw = document.querySelector("#pw");
+  };
   return (
     <div>
       <div>
@@ -42,14 +46,14 @@ export default function Login() {
               <input type='password' id='pw' />
               <br />
 
-              <Button variant='primary'>Login</Button>
+              <Button variant='primary' id='login' onClick={onLogin}>
+                Login
+              </Button>
             </div>
-            <div>
+            <div className={styles.textalign}>
+              <br />
               <u>
                 <a href='signup'>회원가입</a>
-              </u>
-              <u>
-                <a href='resetpw'>비밀번호 재설정</a>
               </u>
             </div>
           </div>

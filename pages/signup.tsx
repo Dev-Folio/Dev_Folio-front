@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/Header";
-import styles from "../styles/Signup.module.scss";
+import styles from "../styles/SignUp.module.scss";
 
 export default function SignUp() {
   return (
@@ -10,23 +10,12 @@ export default function SignUp() {
         <Header />
       </div>
       <div className={styles.container}>
-        <div
-          style={{
-            verticalAlign: "center",
-          }}
-        >
+        <div>
           <h1>
             <b>회원가입</b>
           </h1>
           <div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "300px",
-                verticalAlign: "middle",
-              }}
-            >
+            <div>
               <label>
                 <b>학번</b>
               </label>
@@ -39,7 +28,7 @@ export default function SignUp() {
                 <b>@itc.ac.kr</b>
               </div>
               <br />
-              <Button variant='primary'>이메일 보내기</Button>
+              <Button className='buttonalign'>이메일 보내기</Button>
             </div>
             <div></div>
           </div>

@@ -1,9 +1,14 @@
 .container {
-    margin-top: 40px;
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    width: 1000px;  
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  width: 1000px;  
+  align-items: center;
+  justify-content: center;
+}
+
+  .buttonalign{
     align-items: center;
     justify-content: center;
   }
