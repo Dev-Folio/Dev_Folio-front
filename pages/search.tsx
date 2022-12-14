@@ -38,9 +38,7 @@ export default function Search() {
   const [query, setQuery] = useState('');
   const [members, setMembers] = useState<MemberViewDto[]>([]);
   const [selectedMembers, setSelectedMembers] = useState<MemberViewDto[]>([]);
-
-  const router = useRouter();
-  const { projectId } = router.query;
+  const [cards, setCards] = useState<CardDto[]>([]);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -101,7 +99,17 @@ export default function Search() {
     setTags(newTags);
   }, [selectedTag]);
 
-  const handleSearch = () => {};
+  const handleSearch = async () => {
+    const data = {
+      tags: selectedTag,
+      keyword: query,
+      members: [],
+    };
+    const response = await client.post('/search', data);
+    console.log('search', response.data);
+    const content = response.data.content;
+    setCards(content);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -145,18 +153,19 @@ export default function Search() {
           {/* 검색창 */}
           <div className={styles.search}>
             <IoSearchOutline size={25} />
-            {members.map((member) => (
+            {selectedMembers.map((member) => (
               <MemberTag data={member} />
             ))}
             <input
               className={styles.input}
-              placeholder="@로 시작하여 유저를 검색할 수 있습니다"
+              // placeholder="@로 시작하여 유저를 검색할 수 있습니다"
               value={query}
               onChange={handleChange}
             />
             <Button
               variant="outline-secondary"
               className={styles.search_button}
+              onClick={handleSearch}
             >
               검색
             </Button>
@@ -183,8 +192,10 @@ export default function Search() {
           </div>
 
           {/* 카드들 */}
-          <div style={{ display: 'flex' }}>
-            <Card data={mockCardData} />
+          <div className={styles.card_container}>
+            {cards.map((card) => (
+              <Card data={card} />
+            ))}
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@
   margin-right: auto;
   margin-left: auto;
   display: flex;
-  width: 1000px;
+  // width: 1000px;
   justify-content: center;
 
   .category {
@@ -11,7 +11,7 @@
   }
 
   .search_area {
-    width: 800px;
+    width: 900px;
 
     .search {
       display: flex;
@@ -64,6 +64,11 @@
       display: flex;
       flex-wrap: wrap;
 
+    }
+
+    .card_container {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 }
