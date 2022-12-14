@@ -1,3 +1,5 @@
+import { StringLiteral } from "typescript";
+
 export interface MemberViewDto {
   member_id: number;
   name: string;
@@ -33,4 +35,21 @@ export interface CategoryDto {
   category_id: number;
   name: string;
   tags: number[];
+}
+
+export interface ProjectDto{
+  thumnail: string;
+  projectName: string;
+  wroteMember: MemberViewDto;
+  contributedMembers: MemberViewDto[];
+  startDate: string;
+  endDate: string;
+  tags: TagDto[];
+  github: string[];
+  detail: string;
+  contents: string;
+  views: number;
+  likes: number;
+  createdDate: string;
+  modifiedDate: string;
 }
