@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
-import Search from "../components/Search";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 import Card from "../components/Card";
 import { Button, Nav } from "react-bootstrap";
 
@@ -12,19 +11,10 @@ export default function Home() {
       <div>
         <Header />
       </div>
-      <div
-        className='body'
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
+      <div className={styles.container}>
         <div>
           <div className='searchArea'>
-            <Search />
+            {/* 여기에 넣어주세요 그 뭐냐 그 뭔지 알지 */}
           </div>
           <br />
           <div className='poupularProject'>
