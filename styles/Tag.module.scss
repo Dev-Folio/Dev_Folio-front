@@ -2,9 +2,23 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 20px;
+  border-color: black;
+  outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
   width: fit-content;
-  padding: 0px 6px;
+  padding: 0px 10px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+.unselected {
+  background-color: white;
+  color: black;
+}
+
+.selected {
+  background-color: black;
+  color: white;
 }

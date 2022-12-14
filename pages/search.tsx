@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { IoSearchOutline } from 'react-icons/io5';
 import Header from '../components/Header';
-import Tag from '../components/Tag';
-import { CategoryDto, TagDto } from '../dto';
+import { SearchTag } from '../components/Tag';
+import { CategoryDto, TagData, TagDto } from '../dto';
 import { client } from '../function/request';
 import styles from '../styles/Search.module.scss';
 
 export default function Search() {
   const [categories, setCategories] = useState<CategoryDto[]>();
-  const [tags, setTags] = useState<TagDto[]>();
+  const [tags, setTags] = useState<TagData[]>();
   const [selectedTag, setSelectedTag] = useState<number[]>();
 
   useEffect(() => {
@@ -25,12 +25,24 @@ export default function Search() {
       const response = await client.get('/tag');
       const data: TagDto[] = response.data;
       console.log(data);
-      setTags(data);
+
+      const tags: TagData[] = [];
+      data.map((tagDto) => {
+        tags.push({
+          tagId: tagDto.tag_id,
+          name: tagDto.name,
+          color: tagDto.color,
+          selected: false,
+        });
+      });
+      setTags(tags);
     };
 
     getCategories();
     getTags();
   }, []);
+
+  const tagClick = (tagId: number) => {};
 
   return (
     <>
@@ -61,7 +73,7 @@ export default function Search() {
           <div className={styles.tag_container}>
             {/* 태그 */}
             {tags?.map((tag) => (
-              <Tag data={tag} />
+              <SearchTag data={tag} />
             ))}
           </div>
         </div>

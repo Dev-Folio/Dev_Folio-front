@@ -11,8 +11,8 @@ export interface CardDto {
   project_name: string;
   tags: TagDto[];
   wrote_member: MemberViewDto;
-  views: number;
   likes: number;
+  comments: number;
 }
 
 export interface TagDto {
@@ -20,6 +20,13 @@ export interface TagDto {
   name: string;
   color: string;
   categories: number[];
+}
+
+export interface TagData {
+  tagId: number;
+  name: string;
+  color: string;
+  selected: boolean;
 }
 
 export interface CategoryDto {
