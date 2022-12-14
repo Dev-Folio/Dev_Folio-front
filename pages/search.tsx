@@ -9,22 +9,22 @@ import { client } from '../function/request';
 import styles from '../styles/Search.module.scss';
 
 export default function Search() {
-  const [categories, setCategories] = useState<CategoryDto[]>();
-  const [tags, setTags] = useState<TagData[]>();
-  const [selectedTag, setSelectedTag] = useState<number[]>();
+  const [categories, setCategories] = useState<CategoryDto[]>([]);
+  const [tags, setTags] = useState<TagData[]>([]);
+  const [selectedTag, setSelectedTag] = useState<number[]>([]);
 
   useEffect(() => {
     const getCategories = async () => {
       const response = await client.get('/category');
       const data: CategoryDto[] = response.data;
-      console.log(data);
+      console.log('category', data);
       setCategories(data);
     };
 
     const getTags = async () => {
       const response = await client.get('/tag');
       const data: TagDto[] = response.data;
-      console.log(data);
+      console.log('tag', data);
 
       const tags: TagData[] = [];
       data.map((tagDto) => {
@@ -42,7 +42,35 @@ export default function Search() {
     getTags();
   }, []);
 
-  const tagClick = (tagId: number) => {};
+  const tagClick = (tagId: number) => {
+    const newSelectedTag = [...selectedTag];
+    if (newSelectedTag.includes(tagId)) {
+      // tagId가 있으면 배열에서 삭제
+      setSelectedTag(newSelectedTag.filter((element) => element !== tagId));
+    } else {
+      // 없으면 추가
+      newSelectedTag.push(tagId);
+      setSelectedTag(newSelectedTag);
+    }
+  };
+
+  useEffect(() => {
+    console.log('selectedTag', selectedTag);
+
+    const newTags = [...tags];
+
+    // 모든 selected false로 초기화
+    newTags.map((tags) => (tags.selected = false));
+
+    // selectedTag에 있는 tagId 찾아서 true로 바꿈
+    selectedTag.forEach((selectedTagId) => {
+      const foundIndex = newTags.findIndex(
+        (element) => element.tagId === selectedTagId
+      );
+      newTags[foundIndex].selected = true;
+    });
+    setTags(newTags);
+  }, [selectedTag]);
 
   return (
     <>
@@ -73,7 +101,7 @@ export default function Search() {
           <div className={styles.tag_container}>
             {/* 태그 */}
             {tags?.map((tag) => (
-              <SearchTag data={tag} />
+              <SearchTag data={tag} tagClick={tagClick} key={tag.tagId} />
             ))}
           </div>
         </div>
