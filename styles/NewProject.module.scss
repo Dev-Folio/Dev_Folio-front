@@ -7,3 +7,20 @@
     align-items: center;
     justify-content: center;
   }
+
+  .flextLayout{
+    display: flex;
+  }
+
+  .blockLayout{
+    display: block;
+  }
+
+  .memberTag{
+    display: flex;
+    flex-wrap: wrap; //알아서 지가 정렬됨 -> 자동줄바꿈
+  }
+
+  .imageMargin{
+    margin-right: 15px;
+  }

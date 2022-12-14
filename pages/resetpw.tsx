@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/Header";
+import styles from "../styles/ResetPw.module.scss";
 
 export default function ResetPw() {
   return (
@@ -8,22 +9,12 @@ export default function ResetPw() {
       <div>
         <Header />
       </div>
-      <div
-        className='body'
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
+      <div className={styles.container}>
         <div
           style={{
             verticalAlign: "center",
           }}
         >
-          {/* 이거 폰트 바꾸면 안되나 */}
           <h1>
             <b>비밀번호 재설정</b>
           </h1>
@@ -40,8 +31,9 @@ export default function ResetPw() {
                 <b>학번</b>
               </label>
               <input type='id' id='id' />
-              {/* 나중에 scss로 이거 빨간색으로 설정할거양 */}
-              <label id='errorMsg'>계정이 존재하지 않습니다.</label>
+              <label id='errorMsg' className={styles.errorMsg}>
+                계정이 존재하지 않습니다.
+              </label>
               <br />
 
               <Button variant='primary'>인증 이메일 보내기</Button>

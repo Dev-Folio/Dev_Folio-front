@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import Header from "../components/Header";
+import styles from "../styles/SignUpDetail.module.scss";
 
 export default function SignUpDetail() {
   return (
@@ -8,16 +9,7 @@ export default function SignUpDetail() {
       <div>
         <Header />
       </div>
-      <div
-        className='body'
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
+      <div className={styles.container}>
         <div
           style={{
             verticalAlign: "center",
