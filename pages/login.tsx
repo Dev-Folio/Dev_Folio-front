@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import axios, { AxiosError } from "axios";
 import styles from "../styles/Login.module.scss";
 import React, { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import { useRouter } from "next/router";
 import { IForm, IFormValidate } from "../dto";
 
@@ -123,27 +123,33 @@ export default function Login() {
                 verticalAlign: "middle",
               }}
             >
-              <label>ID</label>
-              <input
-                type='id'
-                id='id'
-                name='id'
-                value={inputs.id}
-                onChange={handleChange}
-              />
-              <label>Password</label>
-              <input
-                type='password'
-                id='password'
-                name='password'
-                value={inputs.password}
-                onChange={handleChange}
-              />
-              <br />
-
-              <Button variant='primary' id='login'>
-                Login
-              </Button>
+              <Form>
+                {" "}
+                <Form.Group>
+                  <label>ID</label>
+                  <Form.Control
+                    type='text'
+                    placeholder='아이디'
+                    name='id'
+                    value={inputs.id}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <label>Password</label>
+                  <Form.Control
+                    type='password'
+                    placeholder='비밀번호'
+                    name='password'
+                    value={inputs.password}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+                <br />
+                <Button variant='primary' type='submit'>
+                  로그인
+                </Button>
+              </Form>
             </div>
             <div className={styles.textalign}>
               <br />
