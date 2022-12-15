@@ -13,25 +13,25 @@ export default function Home() {
   const [likeCard, setLikeCard] = useState<CardDto[]>([]);
 
   useEffect(() => {
-    const getCard = async () => {
-      const response = await client.get("/?page=0&sort=date,ASC");
-      const data: CardDto[] = response.data;
-      console.log("card", data);
-      setCard(data);
-    };
-
-    getCard();
-  }, []);
-
-  useEffect(() => {
     const getLikeCard = async () => {
-      const response = await client.get("/?page=0&sort=likes,ASC");
+      const response = await client.get("/?page=0&sort=likes,DESC");
       const data: CardDto[] = response.data;
       console.log("likecard", data);
       setLikeCard(data);
     };
 
     getLikeCard();
+  }, []);
+
+  useEffect(() => {
+    const getCard = async () => {
+      const response = await client.get("/?page=0&sort=date,DESC");
+      const data: CardDto[] = response.data;
+      console.log("card", data);
+      setCard(data);
+    };
+
+    getCard();
   }, []);
 
   if (card.length < 1 || likeCard.length < 1) {
@@ -51,7 +51,7 @@ export default function Home() {
           <br />
           <div>
             <h2>
-              <b>가장 인기있는 프로젝트</b>
+              <b>최근 업로드 된 프로젝트</b>
               <Button
                 style={{ float: "right", marginLeft: "20px;" }}
                 href='/search'
@@ -72,7 +72,7 @@ export default function Home() {
           <div>
             <h2>
               <br />
-              <b>최근 업로드 된 프로젝트</b>
+              <b>가장 인기있는 프로젝트</b>
               <Button
                 style={{ float: "right", marginLeft: "20px;" }}
                 href='/search'
