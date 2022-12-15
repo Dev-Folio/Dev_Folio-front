@@ -10,25 +10,56 @@ export default function SignUp() {
         <Header />
       </div>
       <div className={styles.container}>
-        <div>
+        <div
+          style={{
+            verticalAlign: "center",
+          }}
+        >
           <h1>
             <b>회원가입</b>
           </h1>
           <div>
-            <div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "300px",
+                verticalAlign: "middle",
+              }}
+            >
               <label>
                 <b>학번</b>
               </label>
+              <input type='text' id='id' />
+              <label>
+                <b>이름</b>
+              </label>
+              <input type='text' id='name' />
+              <label>
+                <b>비밀번호</b>
+              </label>
+              <input type='password' id='password' />
+              <label>
+                <b>비밀번호 확인</b>
+              </label>
+              <input type='password' id='passwordCheck' />
+              <label>
+                <b>전화번호</b>
+              </label>
               <div
                 style={{
-                  display: "block",
+                  display: "flex",
+                  width: "300px",
+                  verticalAlign: "middle",
                 }}
               >
-                <input type='text' id='id' value='202045101' />{" "}
-                <b>@itc.ac.kr</b>
+                <input type='text' id='d' />
+                <input type='text' id='c' />
+                <input type='text' id='s' />
               </div>
               <br />
-              <Button className='buttonalign'>이메일 보내기</Button>
+
+              <Button variant='primary'>회원가입</Button>
             </div>
             <div></div>
           </div>

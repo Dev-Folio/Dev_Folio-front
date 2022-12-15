@@ -53,3 +53,23 @@ export interface ProjectDto{
   createdDate: string;
   modifiedDate: string;
 }
+
+export interface Inputs{
+  image: File | null;
+  imageUrl: string;
+  name: string;
+  detail: string;
+  price : number
+}
+
+export interface IForm{
+  id : string;
+  password : string;
+}
+
+export interface IFormValidate {
+  id : string;
+  password : string;
+}
+
+
