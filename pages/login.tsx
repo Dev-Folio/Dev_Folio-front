@@ -126,10 +126,10 @@ export default function Login() {
               <Form>
                 {" "}
                 <Form.Group>
-                  <label>ID</label>
+                  <label>Email</label>
                   <Form.Control
                     type='text'
-                    placeholder='아이디'
+                    placeholder='학번@itc.ac.kr'
                     name='id'
                     value={inputs.id}
                     onChange={handleChange}
