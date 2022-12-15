@@ -72,4 +72,11 @@ export interface IFormValidate {
   password : string;
 }
 
+export interface Values {
+  id: string;
+}
+
+
+
+
 
